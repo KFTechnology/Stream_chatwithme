@@ -16,10 +16,32 @@ client = AzureOpenAI(
     api_version="2024-12-01-preview"
 )
 
-st.set_page_config(page_title="Chat With ME", page_icon="💬✨")
-
+st.set_page_config(page_title="Chat With ME", page_icon="💬")
 
 st.markdown("""
+<style>
+.toolbar {
+    background-color: #2C3E50;
+    padding: 10px;
+    border-radius: 8px;
+}
+.tootlbar img {
+            
+            align: right
+            margin: 0; 
+            }            
+            
+</style>
+""", unsafe_allow_html=True)
+
+
+with st.container():
+    st.markdown('<div class="toolbar">', unsafe_allow_html=True)
+    col1, col2 = st.columns([1, 2])
+    with col1:
+        st.image("logo/logo.png",width=100)
+    with col2:
+       st.markdown("""
 <style>
 @keyframes glow {
   0% { text-shadow: 0 0 5px #4b9fff; }
@@ -29,17 +51,20 @@ st.markdown("""
 .glow-title {
   font-size: 40px;
   font-weight: 700;
-  text-align: center;
+  text-align: left;
+                    
   animation: glow 2s ease-in-out infinite;
 }
 </style>
            
-<h1 class="glow-title">✨💬 Chat With Me💬✨</h1>
+<h1 class="glow-title">✨💬Chat With Me💬</h1>
 
 
 
             """, unsafe_allow_html=True)
+            
 
+st.markdown('<div class="toolbar">', unsafe_allow_html=True)
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = []
